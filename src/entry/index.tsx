@@ -3,6 +3,7 @@
  */
 import 'antd/dist/antd.css';
 import '@styles/index.less';
+import 'antd-mobile/dist/antd-mobile.css';
 
 /**
  * 第三方库

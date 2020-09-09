@@ -58,8 +58,13 @@ export default class Login extends React.Component<LoginProps> {
                     <p className={styles.btn} onClick={this.handleLinkBtnClick}>
                         Go to <span className={styles.pageName}>Home</span> Page
                     </p>
-                    <p className={styles.btn} onClick={this.handleAddBtnClick}>Add Btn</p>
-                    <p className={styles.btn} onClick={this.handleDecreaseBtnClick}> Decrease Btn</p>
+                    <p className={styles.btn} onClick={this.handleAddBtnClick}>
+                        Add Btn
+                    </p>
+                    <p className={styles.btn} onClick={this.handleDecreaseBtnClick}>
+                        {' '}
+                        Decrease Btn
+                    </p>
                     <p>count : {count}</p>
                 </header>
             </div>

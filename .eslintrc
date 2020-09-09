@@ -34,7 +34,7 @@
     //    "navigator": true,
     //    "window": true,
     //    "node": true
-    //  }
+    //  },
     // ESLint 附带有大量的规则。你可以使用注释或配置文件修改你项目中要使用的规则
     // https://www.npmjs.com/package/@typescript-eslint/eslint-plugin
     // 要改变一个规则设置，你必须将规则 ID 设置为下列值之一：
