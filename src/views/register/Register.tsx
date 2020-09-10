@@ -20,9 +20,8 @@ function mapDispatchToProps(dispatch: RootDispatch) {
     };
 }
 
-
 type RouterProps = RouteComponentProps<any>; //路由参数 Props 类型声明
-type MapStateFromStoreProps = ReturnType<typeof mapStateToProps>;  //映射状态（从 store 中获取某些状态并传递给当前组件）类型声明
+type MapStateFromStoreProps = ReturnType<typeof mapStateToProps>; //映射状态（从 store 中获取某些状态并传递给当前组件）类型声明
 type ComponentDispatchProps = ReturnType<typeof mapDispatchToProps>; // 组件派发 action 集合的类型声明
 
 //组件最终接收的所有 Props 类型声明

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // const promise1 = new Promise((resolve,reject)=>{
+  //   console.log('凡科建站')
+  //   setTimeout(()=>{
+  //     resolve('凡客商城')
+  //     console.log('凡客互动')
+  //   })
+  // })
+  // const promise2 = Promise.resolve().then(()=>{
+  //   console.log('凡科微传单')
+  // }).then(()=>{
+  //   console.log('凡科清站小程序')
+  // })
+  // async function main(){
+  //   console.log('凡科快图')
+  //   console.log(await Promise.all([promise1, promise2]))
+  //   console.log('凡科悦客')
+  //   return '公众号助手'
+  // }
+  // console.log(typeof main())
+  // function getValue(){
+  //   console.log('坦诚合作')
+  // }
+  // var getValue
+  // function Faiso(){
+  //   getValue = function(){
+  //     console.log('价值观')
+  //   }
+  //   return this
+  // }
+  // Faiso.getValue = function(){
+  //     console.log('正直')
+  // }
+  // Faiso.prototype.getValue = function(){
+  //     console.log('务实')
+  // }
+  // let a = function(){
+  //   return this
+  // }
+  // // Faiso.getValue()//正直
+  // // getValue()//持续改进
+  // // Faiso().getValue()//价值观
+  // // getValue()// 价值观
+  // // new Faiso.getValue()//正直
+  // // new Faiso().getValue()//务实
+  // // new new Faiso().getValue()//务实
+
+  // function getName() { //声明式函数变量提升
+  //    alert (5);
+  // }
+
+  // function Foo() {
+  //   getName = function () { 
+  //     alert (1); 
+  //   };
+  //   return this;
+  // }
+  // Foo.getName = function () { 
+  //   alert (2);
+  // };
+  // Foo.prototype.getName = function () {
+  //    alert (3);
+  // };
+  // var getName = function () { 
+  //   alert (4);
+  // };
+  
+
+  // //请写出以下输出结果：
+  // Foo.getName(); // 2
+  // getName();//4
+  // Foo().getName();//1
+  // getName();//1
+  // new Foo.getName();//2 ===>  new (Foo.getName)(); 
+  // /*
+  //  new (带参数列表)比 new (无参数列表)高比函数调用高，跟成员访问同级
+  //  点的优先级(18)比 new 无参数列表(17)优先级高
+  //  当点运算完后又因为有个括号()，此时就是变成 new 有参数列表(18)，所以直接执行 new ，当然也可能有朋友会有疑问为什么遇到()不函数调用再 new 呢，那是因为函数调用(17)比 new 有参数列表(18)优先级低
+  //  .成员访问(18)->new 有参数列表(18)
+  //  所以这里实际上将 getName 函数作为了构造函数来执行，遂弹出 2 。
+  
+  // */
+  // new Foo().getName();//3 ===> (new Foo()).getName() 
+  // /*new Foo().getName(); 原题中，由于返回的是 this ，而 this 在构造函数中本来就代表当前实例化对象，
+  //  最终 Foo 函数返回实例化对象。 之后调用实例化对象的 getName 函数，
+  //  因为在 Foo 构造函数中没有为实例化对象添加任何属性，当前对象的原型对象(prototype)中寻找 getName 函数。 
+  //  当然这里再拓展个题外话，如果构造函数和原型链都有相同的方法，如下面的代码，
+  //  那么默认会拿构造函数的公有方法而不是原型链，这个知识点在原题中没有表现出来，后面改进版我已经加上。
+  // */
+  // new new Foo().getName();//3 ===> new ((new Foo()).getName)();
+  // // 先初始化 Foo 的实例化对象，然后将其原型上的 getName 函数作为构造函数再次 new ，所以最终结果为 3
+  
+</script>
+</html>
