@@ -3,7 +3,14 @@ import React from 'react';
 import style from './tabbar.css';
 import ReactDOM from 'react-dom';
 
-class TabBarExample extends React.Component<any, any> {
+interface Props {}
+
+interface State {
+    selectedTab: string;
+    hidden: boolean;
+    fullScreen: boolean;
+}
+class TabBarExample extends React.Component<Props, State> {
     constructor(props) {
         super(props);
         this.state = {

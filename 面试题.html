@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<style>
+</style>
+
 <body>
-  
+
 </body>
+
+<!-- 单行文本居中，多行文本居左 -->
+<div style="width:300px;height: 200px;text-align: center;">
+  <p style="display: inline-block;text-align: left;word-break: break-all;">
+    xcsddhhfgysxcsdhfgysxcsdhfgysxcsdhfgysxcshfgysxcsdhfgysxcsdhfgysxcsdhfgysxcsfgys
+  </p>
+</div>
 <script>
   // const promise1 = new Promise((resolve,reject)=>{
   //   console.log('凡科建站')
@@ -74,7 +85,7 @@
   // var getName = function () { 
   //   alert (4);
   // };
-  
+
 
   // //请写出以下输出结果：
   // Foo.getName(); // 2
@@ -88,7 +99,7 @@
   //  当点运算完后又因为有个括号()，此时就是变成 new 有参数列表(18)，所以直接执行 new ，当然也可能有朋友会有疑问为什么遇到()不函数调用再 new 呢，那是因为函数调用(17)比 new 有参数列表(18)优先级低
   //  .成员访问(18)->new 有参数列表(18)
   //  所以这里实际上将 getName 函数作为了构造函数来执行，遂弹出 2 。
-  
+
   // */
   // new Foo().getName();//3 ===> (new Foo()).getName() 
   // /*new Foo().getName(); 原题中，由于返回的是 this ，而 this 在构造函数中本来就代表当前实例化对象，
@@ -99,6 +110,83 @@
   // */
   // new new Foo().getName();//3 ===> new ((new Foo()).getName)();
   // // 先初始化 Foo 的实例化对象，然后将其原型上的 getName 函数作为构造函数再次 new ，所以最终结果为 3
-  
+  // 创建一个群，保存通知，通知变化之后通知每个家长（触发所有观察者对象）
+//   class Group {
+//     constructor() {
+//       this.message = '暂无通知'; this.parents = [];
+//     }
+//     getMessage() { return this.message; }
+//     setMassage(message) { this.message = message; this.notifyAllObservers(); }
+//     notifyAllObservers() { this.parents.forEach((parent) => { parent.update(); }); }
+//     attach(parent) { this.parents.push(parent); }
+//   }
+//   // 观察者，每个家长
+//   class Parent {
+//     constructor(name, group) { this.name = name; this.group = group; this.group.attach(this); }
+//     update() { console.log(`${this.name} 收到通知: ${this.group.getMessage()}`); }
+//   }
+//   let group = new Group();
+//   let t1 = new Parent('李妈妈', group);
+//   let t2 = new Parent('王爸爸', group);
+//   let t3 = new Parent('张爷爷', group);
+//   group.setMassage('开家长会'); group.setMassage('开运动会');
+//   /*  李妈妈 收到通知: 开家长会
+//     王爸爸 收到通知: 开家长会
+//     张爷爷 收到通知: 开家长会
+//     李妈妈 收到通知: 开运动会
+//     王爸爸 收到通知: 开运动会
+//     张爷爷 收到通知: 开运动会
+// */
+
+
+  // class Letter {
+  //   constructor(name) { this.name = name; }
+  // }
+  // // 暗恋人小明
+  // let XiaoMing = {
+  //   name: '小明', sendLetter(target) {
+  //     target.receiveLetter(this.name);
+  //   },
+  // };
+  // // 代理小华
+  // let xiaoHua = {
+  //   receiveLetter(customer) {
+  //     // 当然要等小红好心情时才送情书，也在送情书也才创建情书  
+  //     XiaoHong.listenGoodMood(() => {
+  //       XiaoHong.receiveLetter(new Letter(customer + '的情书'));
+  //     });
+  //   },
+  // };
+  // // 心仪对象小红
+  // let XiaoHong = {
+  //   name: '小红',
+  //   receiveLetter(letter) {
+  //     console.log(this.name + '收到：' + letter.name);
+  //   },
+  //   listenGoodMood(fn) { setTimeout(() => { fn(); }, 1000); },
+  // };
+  // XiaoMing.sendLetter(xiaoHua);//小红收到：小明的情书
+
+  // //现在用Proxy模拟一下另一种场景:
+  // //为了保护不及格的同学，课代表拿到全班成绩单后只会公示及格人的成绩。
+  // //对考分有疑问的考生，复议后新分数比以前大10分才有权利去更新成绩
+  // const scoreList = { 'wang': 90, 'li': 60, 'wu': 100, }
+  // const yyProxy = new Proxy(scoreList, {
+  //   get: function (scoreList, name) {
+  //     if (scoreList[name] > 69) {
+  //       console.log('输出成绩')
+  //       return scoreList[name]
+  //     } else { console.log('不及格的成绩无法公示') }
+  //   },
+  //   set: function (scoreList, name, val) {
+  //     if (val - scoreList[name] > 10) {
+  //       console.log('修改成绩')
+  //       scoreList[name] = val
+  //     } else { console.log('无法修改成绩'); }
+  //   }
+  // })
+  // yyProxy['wang'] = 98 //无法修改成绩
+  // yyProxy["li"] = 80 //修改成绩
 </script>
+
 </html>
