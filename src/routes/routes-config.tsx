@@ -58,6 +58,14 @@ export const routesConfig: RouteConfigDeclaration[] = [
         component: App,
         routes: [
             {
+                path: '/main',
+                isDynamic: true,
+                isRedirect: true,  // 重定向到首页
+                component: React.lazy(() =>
+                    import(/* webpackChunkName: "main" */ '@src/layout/mainLayout/MainLayout'),
+                ),
+            },
+            {
                 path: '/home',
                 // exact: true,
                 isDynamic: true,
@@ -95,6 +103,13 @@ export const routesConfig: RouteConfigDeclaration[] = [
                         ),
                     },
                 ],
+            },
+            {
+                path: '/my',
+                isDynamic: true,
+                component: React.lazy(() =>
+                    import(/* webpackChunkName: "my" */ '@src/views/my/My'),
+                ),
             },
             {
                 path: '/login',

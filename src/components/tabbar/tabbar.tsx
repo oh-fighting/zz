@@ -1,65 +1,45 @@
+/*
+ * @Author: 曾泽
+ * @Date: 2020-09-13 11:46:27
+ * @LastEditTime: 2020-09-14 23:38:53
+ * @LastEditors: Please set LastEditors
+ * @Description: 修改一些错误警告以及代码规范
+ */
+
 import { TabBar } from 'antd-mobile';
 import React from 'react';
-import style from './tabbar.css';
-import ReactDOM from 'react-dom';
+import { withRouter } from 'react-router-dom'
 
-interface Props {}
 
-interface State {
+
+export interface IProps {
+}
+
+export interface IState {
     selectedTab: string;
     hidden: boolean;
     fullScreen: boolean;
 }
-class TabBarExample extends React.Component<Props, State> {
-    constructor(props) {
+
+class TabBarExample extends React.Component<any, IState> {
+    constructor(props: any) {
         super(props);
+
         this.state = {
             selectedTab: 'redTab',
             hidden: false,
             fullScreen: false,
-        };
+        }
     }
-
-    renderContent(pageText) {
-        return (
-            <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-                <div style={{ paddingTop: 60 }}>
-                    {' '}
-                    Clicked “{pageText}” tab， show “{pageText}” information
-                </div>
-                <a
-                    style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-                    onClick={(e: Record<string, any>) => {
-                        e.preventDefault();
-                        this.setState({
-                            hidden: !this.state.hidden,
-                        });
-                    }}
-                >
-                    {'Click to show/hide tab-bar'}
-                </a>
-                <a
-                    style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
-                    onClick={(e: Record<string, any>) => {
-                        e.preventDefault();
-                        this.setState({
-                            fullScreen: !this.state.fullScreen,
-                        });
-                    }}
-                >
-                    {' Click to switch fullscreen'}
-                </a>
-            </div>
-        );
+    tabbarClick(path) {
+        this.props.history.push(path);
     }
-
-    render() {
+    public render() {
+        //const routes = renderAllRoutes(this.props.routes);
         return (
             <div
                 style={
-                    this.state.fullScreen
-                        ? { position: 'fixed', height: '100%', width: '100%', top: 0 }
-                        : { height: 400 }
+                    { position: "fixed", bottom: "0", width: '100%' }
                 }
             >
                 <TabBar
@@ -69,8 +49,8 @@ class TabBarExample extends React.Component<Props, State> {
                     hidden={this.state.hidden}
                 >
                     <TabBar.Item
-                        title="Life"
-                        key="Life"
+                        title="首页"
+                        key="Index"
                         icon={
                             <div
                                 style={{
@@ -91,16 +71,11 @@ class TabBarExample extends React.Component<Props, State> {
                                 }}
                             />
                         }
-                        selected={this.state.selectedTab === 'blueTab'}
+                        selected={this.state.selectedTab === 'Index'}
                         badge={1}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 'blueTab',
-                            });
-                        }}
+                        onPress={this.tabbarClick.bind(this, '/home')}
                         data-seed="logId"
                     >
-                        {this.renderContent('Life')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
@@ -127,14 +102,9 @@ class TabBarExample extends React.Component<Props, State> {
                         key="Koubei"
                         badge={'new'}
                         selected={this.state.selectedTab === 'redTab'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 'redTab',
-                            });
-                        }}
+                        onPress={this.tabbarClick.bind(this)}
                         data-seed="logId1"
                     >
-                        {this.renderContent('Koubei')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
@@ -167,7 +137,6 @@ class TabBarExample extends React.Component<Props, State> {
                             });
                         }}
                     >
-                        {this.renderContent('Friend')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={{
@@ -176,21 +145,22 @@ class TabBarExample extends React.Component<Props, State> {
                         selectedIcon={{
                             uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg',
                         }}
-                        title="My"
+                        title="我的"
                         key="my"
                         selected={this.state.selectedTab === 'yellowTab'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 'yellowTab',
-                            });
-                        }}
+                        onPress={this.tabbarClick.bind(this, '/my')}
                     >
-                        {this.renderContent('My')}
                     </TabBar.Item>
                 </TabBar>
             </div>
         );
     }
 }
-export default TabBarExample;
-// ReactDOM.render(<TabBarExample />, mountNode);
+
+export default withRouter(TabBarExample)
+
+
+
+
+
+

@@ -1,5 +1,12 @@
+/*
+ * @Author: 朱文栋
+ * @Date: 2020-09-13 11:46:27
+ * @LastEditTime: 2020-09-14 23:01:01
+ * @LastEditors: Please set LastEditors
+ * @Description: 修复代码警告和无用代码
+ */
+
 import styles from './home.module.less';
-import logo from '@assets/images/logo.svg';
 import React from 'react';
 import { NavBar, Icon, Carousel, WingBlank, Popover } from 'antd-mobile';
 import { renderAllRoutes } from '@routes/route-loader';
@@ -10,13 +17,11 @@ function mapStateToProps(state) {
     return state;
 }
 
-interface RouterProps extends RouteComponentProps<any> {} //路由参数 Props 类型声明
+interface RouterProps extends RouteComponentProps<any> { } //路由参数 Props 类型声明
 type MapStateFromStoreProps = ReturnType<typeof mapStateToProps>; //映射状态（从 store 中获取某些状态并传递给当前组件）类型声明
 /**
  * 组件派发 action 集合的类型声明
- */
-// type ComponentDispatchProps = ReturnType<typeof mapDispatchToProps>;
-/**
+ * type ComponentDispatchProps = ReturnType<typeof mapDispatchToProps>;
  * 组件最终接收的所有 Props 类型声明
  */
 type HomeProps = RouterProps &
@@ -32,29 +37,22 @@ const myImg = src => (
 );
 const Item: any = Popover.Item;
 export default class Home extends React.Component<any, any> {
-    constructor(props) {
+    constructor(props: any) {
         super(props);
+
         this.state = {
-            data: ['1', '2', '3'],
+            data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
             imgHeight: 176,
-            visible: true,
+            visible: false,
             selected: '',
         };
         localStorage.setItem('token', 'login');
     }
-    componentDidMount() {
-        // simulate img loading
-        setTimeout(() => {
-            this.setState({
-                data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-            });
-        }, 100);
-    }
+    componentDidMount() { }
     handleLinkToRegisterBtnClick = () => {
         this.props.history.push('/register');
     };
     onSelect = opt => {
-        // console.log(opt.props.value);
         this.setState({
             visible: false,
             selected: opt.props.value,
@@ -73,7 +71,7 @@ export default class Home extends React.Component<any, any> {
     };
 
     render() {
-        const routes = renderAllRoutes(this.props.routes);
+        //const routes = renderAllRoutes(this.props.routes);
         return (
             <div className={styles.container}>
                 <NavBar
@@ -136,17 +134,20 @@ export default class Home extends React.Component<any, any> {
                 >
                     首页
                 </NavBar>
+                {/* 用于调试路由跳转
+                <button onClick={this.handleLinkToChildOneBtnClick}>to child-one</button>
+                <button onClick={this.handleLinkToChildTwoBtnClick}>to child-two</button> */}
                 <WingBlank>
                     <Carousel
                         autoplay={false}
                         infinite
-                        beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-                        afterChange={index => console.log('slide to', index)}
+                        beforeChange={(from, to) => { }}
+                        afterChange={index => { }}
                     >
                         {this.state.data.map(val => (
                             <a
                                 key={val}
-                                href="http://www.alipay.com"
+                                href="#!"
                                 style={{
                                     display: 'inline-block',
                                     width: '100%',
@@ -158,7 +159,6 @@ export default class Home extends React.Component<any, any> {
                                     alt=""
                                     style={{ width: '100%', verticalAlign: 'top' }}
                                     onLoad={() => {
-                                        // fire window resize event to change height
                                         window.dispatchEvent(new Event('resize'));
                                         this.setState({ imgHeight: 'auto' });
                                     }}
