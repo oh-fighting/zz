@@ -1,8 +1,11 @@
-/**
- * @author：姚嘉东
- * @description：路由配置入口文件
- * @date：2020/3/17
+/*
+ * @Author: atdow
+ * @Date: 2020-09-14 21:24:24
+ * @LastEditTime: 2020-09-15 23:57:14
+ * @LastEditors: Please set LastEditors
+ * @Description: 创建了基础路由
  */
+
 import React from 'react';
 
 /**
@@ -59,11 +62,30 @@ export const routesConfig: RouteConfigDeclaration[] = [
         routes: [
             {
                 path: '/main',
+                // exact: true,
                 isDynamic: true,
                 isRedirect: true,  // 重定向到首页
                 component: React.lazy(() =>
                     import(/* webpackChunkName: "main" */ '@src/layout/mainLayout/MainLayout'),
                 ),
+                routes: [
+                    {
+                        path: '/main/home',
+                        isDynamic: true,
+                        name: "home",
+                        component: React.lazy(() =>
+                            import(/* webpackChunkName: "home" */ '@src/views/home/Home'),
+                        ),
+                    },
+                    {
+                        path: '/main/my',
+                        isDynamic: true,
+                        name: "my",
+                        component: React.lazy(() =>
+                            import(/* webpackChunkName: "my" */ '@src/views/my/My'),
+                        ),
+                    }
+                ],
             },
             {
                 path: '/home',

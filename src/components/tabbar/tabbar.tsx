@@ -1,7 +1,7 @@
 /*
  * @Author: 曾泽
  * @Date: 2020-09-13 11:46:27
- * @LastEditTime: 2020-09-14 23:38:53
+ * @LastEditTime: 2020-09-15 23:55:53
  * @LastEditors: Please set LastEditors
  * @Description: 修改一些错误警告以及代码规范
  */
@@ -31,11 +31,21 @@ class TabBarExample extends React.Component<any, IState> {
             fullScreen: false,
         }
     }
+    componentDidMount() {
+        let pathname = this.props.history.location.pathname
+        switch (pathname) {
+            case '/main/home':
+                this.setState({ selectedTab: 'home' });
+                break;
+            case '/main/my':
+                this.setState({ selectedTab: 'my' });
+                break;
+        }
+    }
     tabbarClick(path) {
         this.props.history.push(path);
     }
     public render() {
-        //const routes = renderAllRoutes(this.props.routes);
         return (
             <div
                 style={
@@ -50,7 +60,7 @@ class TabBarExample extends React.Component<any, IState> {
                 >
                     <TabBar.Item
                         title="首页"
-                        key="Index"
+                        key="home"
                         icon={
                             <div
                                 style={{
@@ -71,9 +81,9 @@ class TabBarExample extends React.Component<any, IState> {
                                 }}
                             />
                         }
-                        selected={this.state.selectedTab === 'Index'}
+                        selected={this.state.selectedTab === 'home'}
                         badge={1}
-                        onPress={this.tabbarClick.bind(this, '/home')}
+                        onPress={this.tabbarClick.bind(this, '/main/home')}
                         data-seed="logId"
                     >
                     </TabBar.Item>
@@ -147,8 +157,8 @@ class TabBarExample extends React.Component<any, IState> {
                         }}
                         title="我的"
                         key="my"
-                        selected={this.state.selectedTab === 'yellowTab'}
-                        onPress={this.tabbarClick.bind(this, '/my')}
+                        selected={this.state.selectedTab === 'my'}
+                        onPress={this.tabbarClick.bind(this, '/main/my')}
                     >
                     </TabBar.Item>
                 </TabBar>
