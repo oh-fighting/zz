@@ -1,7 +1,7 @@
 /*
  * @Author: 朱文栋
  * @Date: 2020-09-13 11:46:27
- * @LastEditTime: 2020-09-14 23:01:01
+ * @LastEditTime: 2020-09-16 22:01:42
  * @LastEditors: Please set LastEditors
  * @Description: 修复代码警告和无用代码
  */
@@ -49,8 +49,8 @@ export default class Home extends React.Component<any, any> {
         localStorage.setItem('token', 'login');
     }
     componentDidMount() { }
-    handleLinkToRegisterBtnClick = () => {
-        this.props.history.push('/register');
+    goBack(): void {
+        this.props.history.goBack();
     };
     onSelect = opt => {
         this.setState({
@@ -59,15 +59,7 @@ export default class Home extends React.Component<any, any> {
         });
     };
     handleVisibleChange = visible => {
-        this.setState({
-            visible,
-        });
-    };
-    handleLinkToChildOneBtnClick = () => {
-        this.props.history.push('/home/child-one');
-    };
-    handleLinkToChildTwoBtnClick = () => {
-        this.props.history.push('/home/child-two');
+        this.setState({ visible });
     };
 
     render() {
@@ -77,7 +69,7 @@ export default class Home extends React.Component<any, any> {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left" />}
-                    onLeftClick={this.handleLinkToRegisterBtnClick}
+                    onLeftClick={this.goBack.bind(this)}
                     rightContent={[
                         <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                         <Popover
@@ -134,9 +126,6 @@ export default class Home extends React.Component<any, any> {
                 >
                     首页
                 </NavBar>
-                {/* 用于调试路由跳转
-                <button onClick={this.handleLinkToChildOneBtnClick}>to child-one</button>
-                <button onClick={this.handleLinkToChildTwoBtnClick}>to child-two</button> */}
                 <WingBlank>
                     <Carousel
                         autoplay={false}

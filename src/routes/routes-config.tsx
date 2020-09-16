@@ -1,7 +1,7 @@
 /*
  * @Author: atdow
  * @Date: 2020-09-14 21:24:24
- * @LastEditTime: 2020-09-15 23:57:14
+ * @LastEditTime: 2020-09-16 21:27:23
  * @LastEditors: Please set LastEditors
  * @Description: 创建了基础路由
  */
@@ -75,6 +75,14 @@ export const routesConfig: RouteConfigDeclaration[] = [
                         name: "home",
                         component: React.lazy(() =>
                             import(/* webpackChunkName: "home" */ '@src/views/home/Home'),
+                        ),
+                    },
+                    {
+                        path: '/main/friend',
+                        isDynamic: true,
+                        name: "friend",
+                        component: React.lazy(() =>
+                            import(/* webpackChunkName: "friend" */ '@src/views/friend/Friend'),
                         ),
                     },
                     {
