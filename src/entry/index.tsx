@@ -25,6 +25,8 @@ import { renderRoutes } from '@routes/route-loader';
 import store from '@store/index';
 import history from '@store/history';
 
+import '@src/mock'
+
 /**
  * 组件
  */

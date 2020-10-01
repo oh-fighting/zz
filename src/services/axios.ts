@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-09-14 21:24:24
+ * @LastEditTime: 2020-10-02 00:50:38
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \zz\src\services\axios.ts
+ */
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError, AxiosInstance } from 'axios';
 import { message } from 'antd';
 import { host } from '@src/services/config';
@@ -8,7 +16,8 @@ import {
 
 const axiosInstance: AxiosInstance = axios.create({
     // 默认的请求头
-    baseURL: host,
+    baseURL: "/fighting",
+    timeout: 6000 // 请求超时时间
 });
 
 // axios.defaults.baseURL = host;

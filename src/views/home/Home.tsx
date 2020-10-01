@@ -1,7 +1,7 @@
 /*
  * @Author: 朱文栋
  * @Date: 2020-09-13 11:46:27
- * @LastEditTime: 2020-09-17 20:56:03
+ * @LastEditTime: 2020-10-02 01:21:08
  * @LastEditors: Please set LastEditors
  * @Description: 修复代码警告和无用代码
  */
@@ -12,6 +12,7 @@ import { NavBar, Icon, Carousel, WingBlank, Popover } from 'antd-mobile';
 import { renderAllRoutes } from '@routes/route-loader';
 import { Switch, RouteComponentProps } from 'react-router-dom';
 import TabBarExample from '@components/tabbar/tabbar.tsx';
+import { getSwiperImg } from 'src/services/api/index/index'
 
 function mapStateToProps(state) {
     return state;
@@ -41,9 +42,7 @@ export default class Home extends React.Component<any, any> {
         super(props);
 
         this.state = {
-            data: ['https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2108032947,475871746&fm=26&gp=0.jpg',
-                'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1321592062,4008367638&fm=26&gp=0.jpg',
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1600357050126&di=5c25f6c2cdc875f8b5be493ba05363a8&imgtype=0&src=http%3A%2F%2Fup.kukudesk.com%2Fpic_360%2F5a%2Ffe%2F8b%2F5afe8bb2ca3dd7e17de862b3041eb719.jpg'],
+            swiperImg: [],
             imgHeight: 176,
             visible: false,
             selected: '',
@@ -51,6 +50,13 @@ export default class Home extends React.Component<any, any> {
         localStorage.setItem('token', 'login');
     }
     componentDidMount() {
+        getSwiperImg().then(res => {
+            if (res.data.code == 200) {
+                this.setState({ swiperImg: res.data.data.data })
+            }
+        }).catch(err => {
+            // console.log("err:", err)
+        })
     }
     goBack(): void {
         this.props.history.goBack();
@@ -136,7 +142,7 @@ export default class Home extends React.Component<any, any> {
                         beforeChange={(from, to) => { }}
                         afterChange={index => { }}
                     >
-                        {this.state.data.map(val => (
+                        {this.state.swiperImg.map(val => (
                             <img
                                 src={`${val}`}
                                 alt=""
