@@ -64,9 +64,9 @@ export function renderRoutes(routesConfig: RouteConfigDeclaration[], extraProps:
                 path={path}
                 exact={exact}
                 component={props => {
-                    if (isProtected && !localStorage.getItem('token')) {
-                        return <Redirect key={'login-redirect'} to={'/login'} />;
-                    }
+                    // if (isProtected && !localStorage.getItem('token')) {
+                    //     return <Redirect key={'login-redirect'} to={'/login'} />;
+                    // }
                     if (isDynamic) {
                         return (
                             <React.Suspense fallback={loadingFallback || '正在加载中...'}>

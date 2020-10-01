@@ -4,6 +4,7 @@
 import 'antd/dist/antd.css';
 import '@styles/index.less';
 import 'antd-mobile/dist/antd-mobile.css';
+import '../style/global.less'
 
 /**
  * 第三方库

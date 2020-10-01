@@ -1,8 +1,11 @@
-/**
- * @author：姚嘉东
- * @description：路由配置入口文件
- * @date：2020/3/17
+/*
+ * @Author: atdow
+ * @Date: 2020-09-14 21:24:24
+ * @LastEditTime: 2020-09-16 21:27:23
+ * @LastEditors: Please set LastEditors
+ * @Description: 创建了基础路由
  */
+
 import React from 'react';
 
 /**
@@ -58,6 +61,41 @@ export const routesConfig: RouteConfigDeclaration[] = [
         component: App,
         routes: [
             {
+                path: '/main',
+                // exact: true,
+                isDynamic: true,
+                isRedirect: true,  // 重定向到首页
+                component: React.lazy(() =>
+                    import(/* webpackChunkName: "main" */ '@src/layout/mainLayout/MainLayout'),
+                ),
+                routes: [
+                    {
+                        path: '/main/home',
+                        isDynamic: true,
+                        name: "home",
+                        component: React.lazy(() =>
+                            import(/* webpackChunkName: "home" */ '@src/views/home/Home'),
+                        ),
+                    },
+                    {
+                        path: '/main/friend',
+                        isDynamic: true,
+                        name: "friend",
+                        component: React.lazy(() =>
+                            import(/* webpackChunkName: "friend" */ '@src/views/friend/Friend'),
+                        ),
+                    },
+                    {
+                        path: '/main/my',
+                        isDynamic: true,
+                        name: "my",
+                        component: React.lazy(() =>
+                            import(/* webpackChunkName: "my" */ '@src/views/my/My'),
+                        ),
+                    }
+                ],
+            },
+            {
                 path: '/home',
                 // exact: true,
                 isDynamic: true,
@@ -95,6 +133,13 @@ export const routesConfig: RouteConfigDeclaration[] = [
                         ),
                     },
                 ],
+            },
+            {
+                path: '/my',
+                isDynamic: true,
+                component: React.lazy(() =>
+                    import(/* webpackChunkName: "my" */ '@src/views/my/My'),
+                ),
             },
             {
                 path: '/login',
