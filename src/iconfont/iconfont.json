@@ -1,0 +1,44 @@
+{
+  "id": "2111944",
+  "name": "fighting",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3874042",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "12733312",
+      "name": "好友",
+      "font_class": "haoyou",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "435935",
+      "name": "朋友圈",
+      "font_class": "pengyouquan1",
+      "unicode": "e7be",
+      "unicode_decimal": 59326
+    },
+    {
+      "icon_id": "6997493",
+      "name": "我 的",
+      "font_class": "wodedangxuan",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "12723363",
+      "name": "首页",
+      "font_class": "qiepian",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    }
+  ]
+}

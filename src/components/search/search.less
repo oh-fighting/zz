@@ -1,0 +1,46 @@
+@search-height: 30px;
+
+.search {
+    width: 300px;
+    height: @search-height;
+    background-color: #f3f3f3;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    .input {
+        width: 250px;
+        line-height: 12px;
+        height: 25px;
+        background-color: #f3f3f3;
+        margin-left: 5px;
+        font-size: 12px;
+    }
+
+    i {
+        font-size: 15px;
+    }
+
+    .my-swiper {
+        position: absolute;
+        top: 50%;
+        left: 35px;
+        width: 250px;
+        transform: translateY(-50%);
+        z-index: 2;
+        height: @search-height;
+
+        .swiper-text {
+            text-align: left;
+            height: 100%;
+            line-height: @search-height;
+            font-size: 12px;
+        }
+    }
+}
