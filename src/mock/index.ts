@@ -16,8 +16,8 @@ if (process.env.NODE_ENV !== 'production') {
   }
   // 使用同步加载依赖
   const Mock = require('mockjs2')
-  require('./services/index')  //全球新药-批准上市
-
+  require('./services/index')  // 首页
+  require('./services/search')  // 搜索页
   Mock.setup({
     timeout: 800 // setter delay time
   })

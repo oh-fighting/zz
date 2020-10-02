@@ -96,6 +96,13 @@ export const routesConfig: RouteConfigDeclaration[] = [
                 ],
             },
             {
+                path: '/search',
+                isDynamic: true,
+                component: React.lazy(() =>
+                    import(/* webpackChunkName: "my" */ '@src/views/search/Search'),
+                ),
+            },
+            {
                 path: '/home',
                 // exact: true,
                 isDynamic: true,
