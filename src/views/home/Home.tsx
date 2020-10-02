@@ -11,7 +11,7 @@ import React from 'react';
 import { NavBar, Icon, Carousel, WingBlank, Popover } from 'antd-mobile';
 import { renderAllRoutes } from '@routes/route-loader';
 import { Switch, RouteComponentProps } from 'react-router-dom';
-import TabBarExample from '@components/tabbar/tabbar.tsx';
+import Tabbar from '@components/tabbar/tabbar.tsx';
 import { getSwiperImg } from 'src/services/api/index/index'
 
 function mapStateToProps(state) {
@@ -157,7 +157,6 @@ export default class Home extends React.Component<any, any> {
                         ))}
                     </Carousel>
                 </WingBlank>
-                <TabBarExample />
             </div>
         );
     }
