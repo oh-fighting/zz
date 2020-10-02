@@ -8,6 +8,7 @@
 
 import styles from './home.module.less';
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 import { NavBar, Icon, Carousel, WingBlank, Popover } from 'antd-mobile';
 import { renderAllRoutes } from '@routes/route-loader';
 import { Switch, RouteComponentProps } from 'react-router-dom';
@@ -30,7 +31,7 @@ type HomeProps = RouterProps &
     MapStateFromStoreProps & {
         routes?: any;
     };
-export default class Home extends React.Component<any, any> {
+class Home extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
 
@@ -65,7 +66,7 @@ export default class Home extends React.Component<any, any> {
         this.setState({ visible });
     };
     searchClick() {
-        console.log("searchClick")
+        this.props.history.push('/search');
     }
     renderSwiper() {
         if (this.state.swiperImg.length > 0) {
@@ -101,10 +102,15 @@ export default class Home extends React.Component<any, any> {
         return (
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <Search showTextSwiper={true} searchClick={this.searchClick} textSwiperData={this.state.textSwiperData} />
+                    <Search
+                        showTextSwiper={true}
+                        textSwiperData={this.state.textSwiperData}
+                        searchClick={this.searchClick.bind(this)} />
                 </div>
                 {this.renderSwiper()}
             </div>
         );
     }
 }
+
+export default withRouter(Home)

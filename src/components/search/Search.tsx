@@ -28,6 +28,9 @@ export default class Search extends React.Component<IProps, IState> {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+    }
+
     renderTextSwiper(showState: boolean): any {
         // 当用户传入了placeholder也不能显示textSwiper
         if (showState && !!!this.props.placeholder && !this.state.foucesState) {
