@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "3874042",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
       "icon_id": "12733312",
       "name": "好友",
       "font_class": "haoyou",

@@ -13,6 +13,7 @@ import { renderAllRoutes } from '@routes/route-loader';
 import { Switch, RouteComponentProps } from 'react-router-dom';
 import Tabbar from '@components/tabbar/tabbar.tsx';
 import { getSwiperImg } from 'src/services/api/index/index'
+import Search from '@src/components/search/Search'
 
 function mapStateToProps(state) {
     return state;
@@ -29,14 +30,6 @@ type HomeProps = RouterProps &
     MapStateFromStoreProps & {
         routes?: any;
     };
-const myImg = src => (
-    <img
-        src={`https://gw.alipayobjects.com/zos/rmsportal/${src}.svg`}
-        className="am-icon am-icon-xs"
-        alt=""
-    />
-);
-const Item: any = Popover.Item;
 export default class Home extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -46,6 +39,7 @@ export default class Home extends React.Component<any, any> {
             imgHeight: 176,
             visible: false,
             selected: '',
+            textSwiperData: ["英短", "金渐层", "美短"]
         };
         localStorage.setItem('token', 'login');
     }
@@ -70,71 +64,12 @@ export default class Home extends React.Component<any, any> {
     handleVisibleChange = visible => {
         this.setState({ visible });
     };
-
-    render() {
-        //const routes = renderAllRoutes(this.props.routes);
-        return (
-            <div className={styles.container}>
-                <NavBar
-                    mode="light"
-                    icon={<Icon type="left" />}
-                    onLeftClick={this.goBack.bind(this)}
-                    rightContent={[
-                        <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-                        <Popover
-                            key="1"
-                            mask
-                            overlayClassName="fortest"
-                            overlayStyle={{ color: 'currentColor' }}
-                            visible={this.state.visible}
-                            overlay={[
-                                <Item
-                                    key="4"
-                                    value="scan"
-                                    icon={myImg('tOtXhkIWzwotgGSeptou')}
-                                    data-seed="logId"
-                                >
-                                    扫一扫
-                                </Item>,
-                                <Item
-                                    key="5"
-                                    value="special"
-                                    icon={myImg('PKAgAqZWJVNwKsAJSmXd')}
-                                    style={{ whiteSpace: 'nowrap' }}
-                                >
-                                    我的二维码
-                                </Item>,
-                                <Item
-                                    key="6"
-                                    value="button ct"
-                                    icon={myImg('uQIYTFeRrjPELImDRrPt')}
-                                >
-                                    <span style={{ marginRight: 5 }}>帮助</span>
-                                </Item>,
-                            ]}
-                            align={{
-                                overflow: { adjustY: 0, adjustX: 0 },
-                                offset: [-10, 0],
-                            }}
-                            onVisibleChange={this.handleVisibleChange}
-                            onSelect={this.onSelect}
-                        >
-                            <div
-                                style={{
-                                    height: '100%',
-                                    padding: '0 15px',
-                                    marginRight: '-15px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <Icon type="ellipsis" />
-                            </div>
-                        </Popover>,
-                    ]}
-                >
-                    首页
-                </NavBar>
+    searchClick() {
+        console.log("searchClick")
+    }
+    renderSwiper() {
+        if (this.state.swiperImg.length > 0) {
+            return (
                 <WingBlank>
                     <Carousel
                         autoplay={true}
@@ -153,10 +88,22 @@ export default class Home extends React.Component<any, any> {
                                     this.setState({ imgHeight: 'auto' });
                                 }}
                             />
-
                         ))}
                     </Carousel>
                 </WingBlank>
+            )
+        } else {
+            return (<div className={styles.noSwiper}>图片加载中...</div>)
+        }
+    }
+    render() {
+        //const routes = renderAllRoutes(this.props.routes);
+        return (
+            <div className={styles.container}>
+                <div className={styles.header}>
+                    <Search showTextSwiper={true} searchClick={this.searchClick} textSwiperData={this.state.textSwiperData} />
+                </div>
+                {this.renderSwiper()}
             </div>
         );
     }

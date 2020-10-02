@@ -1,4 +1,3 @@
-import { TabBar } from 'antd-mobile';
 import React from 'react';
 import './tabbar.less'
 import { withRouter } from 'react-router-dom'
