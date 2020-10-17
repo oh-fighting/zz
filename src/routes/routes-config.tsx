@@ -103,6 +103,13 @@ export const routesConfig: RouteConfigDeclaration[] = [
                 ),
             },
             {
+                path: '/login',
+                isDynamic: true,
+                component: React.lazy(() =>
+                    import(/* webpackChunkName: "my" */ '@src/views/my/my-login/index'),
+                ),
+            },
+            {
                 path: '/home',
                 // exact: true,
                 isDynamic: true,
@@ -148,17 +155,17 @@ export const routesConfig: RouteConfigDeclaration[] = [
                     import(/* webpackChunkName: "my" */ '@src/views/my/My'),
                 ),
             },
-            {
-                path: '/login',
-                isDynamic: true,
-                isRedirect: true,
-                component: React.lazy(() =>
-                    import(
-                        /* webpackChunkName: "login" */
-                        '@src/views/login/Login'
-                    ),
-                ),
-            },
+            // {
+            //     path: '/login',
+            //     isDynamic: true,
+            //     isRedirect: true,
+            //     component: React.lazy(() =>
+            //         import(
+            //             /* webpackChunkName: "login" */
+            //             '@src/views/login/Login'
+            //         ),
+            //     ),
+            // },
             {
                 path: '/register',
                 isDynamic: true,

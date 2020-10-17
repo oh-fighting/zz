@@ -1,24 +1,29 @@
 import * as React from 'react';
+import './my.less';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
-export interface IProps {
-}
+import MyMessage from './my-message/index';
 
-export interface IState {
-}
+export interface IProps { }
+
+export interface IState { }
 
 export default class App extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
 
-        this.state = {
-        }
+        this.state = {};
     }
 
     public render() {
         return (
-            <div>
-                my
-            </div>
+            <Router>
+                <div className="myPage">
+                    <Switch>
+                        <MyMessage />
+                    </Switch>
+                </div>
+            </Router>
         );
     }
 }
