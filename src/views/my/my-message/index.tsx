@@ -23,7 +23,7 @@ export default class MyMessage extends React.Component<any, IStat> {
     }
     login() {
         //登录
-        console.log(this.props);
+        this.props._this.history.push('/login');
     }
     public render() {
         return (
@@ -32,7 +32,7 @@ export default class MyMessage extends React.Component<any, IStat> {
                     <div className="message-logo">
                         <img className="message-img" src={logo} alt="头像" />
                         {this.state.isLogin ? (
-                            <p>
+                            <p className="message-loin">
                                 <span>游客</span>
                             </p>
                         ) : (
@@ -44,8 +44,8 @@ export default class MyMessage extends React.Component<any, IStat> {
                     </div>
 
                     <div className="message-icon">
-                        <i className="iconfont icon-fire"></i>
-                        <i className="iconfont icon-fire"></i>
+                        <i className="iconfont icon-shezhi"></i>
+                        <i className="iconfont icon-xiaoxi"></i>
                     </div>
                 </div>
 

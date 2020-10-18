@@ -3,10 +3,11 @@ import './my.less';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import MyMessage from './my-message/index';
+import MyApply from './my-apply';
 
-export interface IProps { }
+export interface IProps {}
 
-export interface IState { }
+export interface IState {}
 
 export default class App extends React.Component<IProps, IState> {
     constructor(props: IProps) {
@@ -17,13 +18,12 @@ export default class App extends React.Component<IProps, IState> {
 
     public render() {
         return (
-            <Router>
+            <>
                 <div className="myPage">
-                    <Switch>
-                        <MyMessage />
-                    </Switch>
+                    <MyMessage _this={this.props} />
                 </div>
-            </Router>
+                <MyApply />
+            </>
         );
     }
 }
