@@ -20,7 +20,7 @@ export default class App extends React.Component<IProps, IState> {
         return (
             <>
                 <div className="myPage">
-                    <MyMessage _this={this.props} />
+                    <MyMessage />
                 </div>
                 <MyApply />
             </>

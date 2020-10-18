@@ -106,7 +106,7 @@ export const routesConfig: RouteConfigDeclaration[] = [
                 path: '/login',
                 isDynamic: true,
                 component: React.lazy(() =>
-                    import(/* webpackChunkName: "my" */ '@src/views/my/my-login/index'),
+                    import(/* webpackChunkName: "my" */ '@src/views/login/index'),
                 ),
             },
             {
