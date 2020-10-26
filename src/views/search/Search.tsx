@@ -34,6 +34,7 @@ class SearchPage extends React.Component<any, IState> {
         });
     }
     cancel() {
+        // console.log("test");
         this.props.history.goBack();
     }
     public render() {
